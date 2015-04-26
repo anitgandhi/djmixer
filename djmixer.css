@@ -1,0 +1,35 @@
+.page-title {
+	position: absolute;
+	color: #fff;
+	display: inline-block;
+	font-size: 1.5rem;
+	padding: 0;
+	left: 15%;
+}
+
+.collection .collection-item.avatar .secondary-content {
+	top: 8px;
+}
+
+.small-med {
+	font-size: 3rem;
+	cursor: pointer;
+}
+
+.score {
+	text-align: center;
+	transform: translateY(-25%);
+}
+
+
+#splashscreen {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    background: url('splash.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
