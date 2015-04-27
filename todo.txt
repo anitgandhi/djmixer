@@ -1,20 +1,14 @@
-hide vote arrows instead of disabling them
-
-actually update score in local storage
-
-fill the itunes, google, and local libraries with actual content
-
-animate the change from plus to check
-
-host mode allows for controlling the queue
-
-make sure the order of song title, artist and album are consistent
-
-front of queue is currently playing, that should be displayed to host 
-when host clicks next song, it should be removed from queue local storage
-
-
-
 done
 =================
 make the add/remove songs actually change local storage - done
+actually update score in local storage
+fill the itunes, google, and local libraries with actual content
+
+host mode allows for controlling the queue
+	front of queue is currently playing, that should be displayed to host 
+	when host clicks next song, it should be removed from queue local storage, and the next one is moved up
+	view number of people at party
+
+queue remove on enough downvotes
+
+sort by highest score

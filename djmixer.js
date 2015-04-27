@@ -11,27 +11,58 @@ $( document ).ready(function(){
 	});
 
 	// initialize local storage queue if it's not present
-	if (localStorage.getItem("queue") === null)
+	if (sessionStorage.getItem("queue") === null)
 	{
-		localStorage.setItem("queue", "");
+		sessionStorage.setItem("queue", "");
 	}
 });
 
 function updateVal(id, element, operation)
 {
 	var score = $('#' + id);
+	var flag = 0;
+
+	// parse id to get the queue number to update its score
+	var queueNum = id.split("-").pop();
+	var queue = JSON.parse(sessionStorage["queue"]);
 
 	// only change the value if it is allowed to be changed
 	if (score.data('voted') == 'no')
 	{
+		// if increment operation
 		if (operation == 'inc')
-			score.html(parseInt($('#' + id).html(), 10)+1);
+		{
+			score.html(parseInt(score.html(), 10)+1);
+			queue[queueNum].score += 1;
+		}
+
+		// if decrement operation
 		else if (operation == 'dec')
-			score.html(parseInt($('#' + id).html(), 10)-1);
+		{
+			score.html(parseInt(score.html(), 10)-1);
+			queue[queueNum].score -= 1;
+		}
+
+		// if score goes below -5, then remove from queue and call loadQueue
+		if (parseInt(score.html(), 10) < -5)
+		{
+			queue.splice(queueNum, 1);
+			flag = 1;
+		}
+
+		// update local storage score
+		sessionStorage["queue"] = JSON.stringify(queue);
+
+		// don't allow voting on that item again
 		score.data('voted', 'yes');
 		element.onclick = function(){return false;};
+
+		// if we removed the queue item because of score, call loadQueue
+		if (flag == 1)
+		{
+			loadQueue();
+		}
 	}
-	
 }
 
 function addToQueue(element, songTitle, artistTitle, albumTitle, albumNum)
@@ -41,7 +72,7 @@ function addToQueue(element, songTitle, artistTitle, albumTitle, albumNum)
 
 	var url = "albums/" + albumNum + ".jpg";
 
-	var temp = localStorage["queue"];
+	var temp = sessionStorage["queue"];
 	var queue;
 
 	// if it's empty, manually make queue an empty array
@@ -50,28 +81,32 @@ function addToQueue(element, songTitle, artistTitle, albumTitle, albumNum)
 	else
 		queue = JSON.parse(temp);
 
+	var randomScore = Math.floor(Math.random() * 11) - 5;
+
 	// save to the local queue object
 	queue.push( { title: songTitle,
-				  album: albumTitle,
 				  artist: artistTitle,
+				  album: albumTitle,
 				  file: url,
-				  score: 0 }
+				  score: randomScore }
 			  );
 
 	// save to local storage
-	localStorage["queue"] = JSON.stringify(queue);
+	sessionStorage["queue"] = JSON.stringify(queue);
 
 	// toast that it's been added
 	Materialize.toast('"' + songTitle + '"' + ' has been added!', 2500); // 4000 is the duration of the toast
 }
 
-
 function loadQueue()
 {
-	// get items from localstorage
-	var temp = localStorage["queue"];
+	// get items from sessionStorage
+	var temp = sessionStorage["queue"];
 
 	var container = $('.collection');
+
+	// always clear the container first
+	container.html('');
 
 	// if it's empty, manually make queue an empty array
 	if (temp.length == 0)
@@ -83,6 +118,16 @@ function loadQueue()
 	{
 		var queue = JSON.parse(temp);
 	}
+
+	// sort the queue
+	function compare(a,b) {
+		if (a.score > b.score)
+			return -1;
+		if (a.score < b.score)
+			return 1;
+		return 0;
+	}
+	queue.sort(compare);
 
 	$.each(queue, function(index, el)
 	{
@@ -103,4 +148,71 @@ function loadQueue()
 
 		container.append(item);
 	});
+}
+
+function loadHost()
+{
+	// get items from sessionStorage
+	var temp = sessionStorage["queue"];
+
+	// if it's empty, tell the user
+	if (temp.length == 0)
+	{
+		$('#curr_song').html('Nothing in the queue.');
+		$('#next_song').html('Nothing in the queue.');
+		return;
+	}
+
+	var queue = JSON.parse(temp);
+
+	var curr = queue[0];
+	var next = queue[1];
+
+	// if there's at least 1
+	if (queue.length >= 1)
+	{
+		$('#curr_song').html(curr.title);
+		$('#curr_artist').html(curr.arist);
+		$('#curr_album').html(curr.album);
+		$('#curr_album_file').attr('src', curr.file);
+
+		// clear the next entry
+		$('#next_song').html('');
+		$('#next_artist').html('');
+		$('#next_album').html('');
+		$('#next_album_file').attr('src', '');
+	}
+
+	// if we know there's at least one more
+	if (queue.length >= 2)	
+	{
+		$('#next_song').html(next.title);
+		$('#next_artist').html(next.arist);
+		$('#next_album').html(next.album);
+		$('#next_album_file').attr('src', next.file);
+	}
+}
+
+function hostNext()
+{
+	// actually remove from local storage
+	// get items from sessionStorage
+	var temp = sessionStorage["queue"];
+
+	// if it's empty, there's nothing to do
+	if (temp.length == 0)
+	{
+		return;
+	}
+
+	var queue = JSON.parse(temp);
+
+	// remove the first entry by shifting everything up
+	queue.shift();
+
+	// save to sessionsStorage
+	sessionStorage["queue"] = JSON.stringify(queue);
+
+	// once we've updated local storage, call loadHost to update the page
+	loadHost();
 }

@@ -34,7 +34,7 @@
 			    <li><a class="waves-effect waves-light" href="google.html">Google Music Library</a></li>
 			    <li><a class="waves-effect waves-light" href="local.html">Local Library</a></li>
 			    <li class="active"><a class="waves-effect waves-light" href="host.html">Host Mode</a></li>
-			    <li><a class="waves-effect waves-light" href="settings.html">Settings</a></li>
+			    
 			  </ul>
 			  <a href="#" class="waves-effect waves-light" style="float:right"><i class="mdi-navigation-more-vert"></i></a>
 		</div>
@@ -42,34 +42,75 @@
 	</div>
 
 	<main>
+		<div class="container">
 
-		Currently Playing
+			<div class="row">
+				<div class="col s12">
+					<h4>Guests: 10</h4>
+				</div>
+			</div>
 
-		<ul class="collection">
+			<div class="row">
+				<div class="col s4 center" style="padding: 10% 0">
+					Current: 
+				</div>
 
-		    <li class="collection-item avatar">
-		      <img src="albums/10.jpg" alt="" class="circle">
-		      <span class="title">Some Chords</span>
-		      <p>deadmau5</p>
-		      <p><i>4x4=12</i></p>
-		    </li>
-		</ul>
+				<div class="col s8">
+					<ul class="collection">
+					    <li class="collection-item avatar">
+					      <img src="" alt="" class="circle" id="curr_album_file">
+					      <span class="title" id="curr_song"></span>
+					      <p id="curr_artist"></p>
+					      <p id="curr_album"><i></i></p>
+					    </li>
+					</ul>
+				</div>
+			</div>
 
-		Next song
+			<div class="row">
+				<div class="col s4 center" style="padding: 10% 0">
+					Next: 
+				</div>
 
-		<ul class="collection">
+				<div class="col s8">
+					<ul class="collection">
+					    <li class="collection-item avatar">
+					      <img src="" alt="" class="circle" id="next_album_file">
+					      <span class="title" id="next_song"></span>
+					      <p id="next_artist"></p>
+					      <p id="next_album"><i></i></p>
+					    </li>
+					</ul>
+				</div>
+			</div>
 
-		    <li class="collection-item avatar">
-		      <img src="albums/10.jpg" alt="" class="circle">
-		      <span class="title">Some Chords</span>
-		      <p>deadmau5</p>
-		      <p><i>4x4=12</i></p>
-		    </li>
-		</ul>
+			<div class="row blue-text text-darken-3 small-med">
+				<div class="col s6 center">
+					<i class="mdi-av-play-arrow"></i>
+				</div>
+				<div class="col s6 center">
+					<i class="mdi-av-skip-next" onclick="hostNext()"></i>
+				</div>
+			</div>
 
-		Play/pause, next song
-		volume controls
+			<div class="row blue-text text-darken-3 small-med">
+				<div class="col s4 center">
+					<i class="mdi-av-volume-down"></i>
+				</div>
+				<div class="col s4 center">
+					<i class="mdi-av-volume-off"></i>
+				</div>
+				<div class="col s4 center">
+					<i class="mdi-av-volume-up"></i>
+				</div>
+			</div>
+			
+		</div>
 	</main>
+
+	<script>
+		loadHost();
+	</script>
 
 
 </body>
