@@ -5,8 +5,13 @@ $( document ).ready(function(){
 		}
 	);
 
-	$('#splashscreen').delay(2500).fadeOut('slow');
-	$('#nearby-spinner').delay(5000).fadeOut('slow', function(){
+	$('.dropdown-button').dropdown({
+      constrain_width: false, // Does not change width of dropdown to that of the activator
+    }
+  );
+
+	$('#splashscreen').delay(1500).fadeOut('slow');
+	$('#nearby-spinner').delay(3000).fadeOut('slow', function(){
 		$('#nearby-cards').fadeIn('slow');
 	});
 
