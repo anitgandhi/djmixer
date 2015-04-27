@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<head>
 	<!--Import materialize.css-->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="djmixer.css">
@@ -16,45 +15,97 @@
 	<script src="djmixer.js"></script>
 </head>
 
-<body>
+<body class="blue-grey darken-4 white-text">
 
 	<div id="splashscreen"></div>
 	
 	<div class="navbar-fixed">
 		<nav>
-			<div class="nav-wrapper deep-purple">
+			<div class="nav-wrapper blue darken-3">
 			  <a href="#" data-activates="mobile-demo" class="button-collapse waves-effect waves-light"><i class="mdi-navigation-menu"></i></a>
-			  <span class="page-title">Play Queue</span>
-			  <ul class="side-nav" id="mobile-demo">
-			  	<li hidden>
-			  		<div>
-			  			<img src="splash.png" style="width:100%">
-			  			<a href="spotify.html">Spotify</a>
-			  		</div>
+			  <span class="page-title">Nearby Parties</span>
+			  <ul class="side-nav grey darken-3 white-text" id="mobile-demo">
+			  	<li class="blue">
+			  		<img src="images/square.jpg" alt="" class="circle responsive-img" style="max-width:40%; padding-top:5%">
+			  		<h4 style="display:inline; color:#444; position:absolute; padding:10px;">Anit Gandhi</h4>
 			  	</li>
-			  	<li class="active"><a href="nearby.html">Nearby Parties</a></li>
-			  	<li><a href="queue.html">Queue</a></li>
-			    <li><a href="spotify.html">Spotify Library</a></li>
-			    <li><a href="itunes.html">iTunes Library</a></li>
-			    <li><a href="google.html">Google Music Library</a></li>
-			    <li><a href="local.html">Local Library</a></li>
-			    <li><a href="settings.html">Settings</a></li>
+			  	<li class="active"><a class="waves-effect waves-light" href="nearby.html">Nearby Parties</a></li>
+			  	<li><a class="waves-effect waves-light" href="queue.html">Queue</a></li>
+			    <li><a class="waves-effect waves-light" href="spotify.html">Spotify Library</a></li>
+			    <li><a class="waves-effect waves-light" href="itunes.html">iTunes Library</a></li>
+			    <li><a class="waves-effect waves-light" href="google.html">Google Music Library</a></li>
+			    <li><a class="waves-effect waves-light" href="local.html">Local Library</a></li>
+			    <li><a class="waves-effect waves-light" href="host.html">Host Mode</a></li>
+			    <li><a class="waves-effect waves-light" href="settings.html">Settings</a></li>
 			  </ul>
 			  <a href="#" class="waves-effect waves-light" style="float:right"><i class="mdi-navigation-more-vert"></i></a>
 		</div>
 		</nav>
 	</div>
 
-	<!-- <ul class="collection">
+	<main>
+		<div class="container">
 
-	    <li class="collection-item avatar">
-	      <img src="albums/1.jpg" alt="" class="circle">
-	      <span class="title">Song Name</span>
-	      <p>Artist</p>
-	      <p>Album</p>
-	    </li>
+		<div class="center-align" style="transform:translateY(300%)" id="nearby-spinner">
+			<div class="preloader-wrapper big active center">
+				<div class="spinner-layer spinner-blue-only">
+					<div class="circle-clipper left">
+						<div class="circle"></div>
+						</div><div class="gap-patch">
+						<div class="circle"></div>
+						</div><div class="circle-clipper right">
+						<div class="circle"></div>
+					</div>
+				</div>
+			</div>
+			<h5>Finding parties near you...</h5>
+		</div>
 
-  </ul> -->
+		<div hidden id="nearby-cards">
+
+			<div class="row">
+				<div class="col s12">
+					<div class="card small grey darken-1">
+						<div class="card-image">
+							<img src="parties/party1.jpg">
+							<span class="card-title">Party 101</span>
+						</div>
+						<div class="card-content">
+							<p>Hosted by: <i>Alex Kordas</i></p>
+						</div>
+						<div class="card-action">
+							<input type='password' maxlength="12" placeholder='Join Code' style="width:75%; margin:0">
+							<a href="#">Join</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col s12">
+					<div class="card small grey darken-1">
+						<div class="card-image">
+							<img src="parties/clybourne.jpg">
+							<span class="card-title">Wine Night</span>
+						</div>
+						<div class="card-content">
+							<p>Hosted by: <i>The Clybourne</i></p>
+						</div>
+						<div class="card-action">
+							<input type='password' maxlength="12" placeholder='Join Code' style="width:75%; margin:0">
+							<a href="#">Join</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+
+		</div>
+	</main>
 
 
 </body>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--Import materialize.css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="djmixer.css">
+
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+	<!--Import jQuery before materialize.js-->
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+
+	<script src="djmixer.js"></script>
+</head>
+
+<body class="blue-grey darken-4 white-text">
+	
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper blue darken-3">
+			  <a href="#" data-activates="mobile-demo" class="button-collapse waves-effect waves-light"><i class="mdi-navigation-menu"></i></a>
+			  <span class="page-title">iTunes Library</span>
+			  <ul class="side-nav grey darken-3 white-text" id="mobile-demo">
+			  	<li class="blue">
+			  		<img src="images/square.jpg" alt="" class="circle responsive-img" style="max-width:40%; padding-top:5%">
+			  		<h4 style="display:inline; color:#444; position:absolute; padding:10px;">Anit Gandhi</h4>
+			  	</li>
+			  	<li><a class="waves-effect waves-light" href="nearby.html">Nearby Parties</a></li>
+			  	<li><a class="waves-effect waves-light" href="queue.html">Queue</a></li>
+			    <li><a class="waves-effect waves-light" href="spotify.html">Spotify Library</a></li>
+			    <li class="active"><a class="waves-effect waves-light" href="itunes.html">iTunes Library</a></li>
+			    <li><a class="waves-effect waves-light" href="google.html">Google Music Library</a></li>
+			    <li><a class="waves-effect waves-light" href="local.html">Local Library</a></li>
+			    <li><a class="waves-effect waves-light" href="host.html">Host Mode</a></li>
+			    <li><a class="waves-effect waves-light" href="settings.html">Settings</a></li>
+			  </ul>
+			  <a href="#" class="waves-effect waves-light" style="float:right"><i class="mdi-navigation-more-vert"></i></a>
+		</div>
+		</nav>
+	</div>
+
+	<main>
+		<ul class="collection">
+
+		    <li class="collection-item avatar">
+		      <img src="albums/10.jpg" alt="" class="circle">
+		      <span class="title">Some Chords</span>
+		      <p>deadmau5</p>
+		      <p><i>4x4=12</i></p>
+
+		      <i class="blue-text text-darken-3 secondary-content mdi-content-add small-med" style="padding:20px 0" onclick="addToQueue(this, 'Some Chords', 'deadmau5', '4x4=12', '10')"></i>
+		      </a>
+		    </li>
+
+		    <li class="collection-item avatar">
+		      <img src="albums/10.jpg" alt="" class="circle">
+		      <span class="title">Animal Rights</span>
+		      <p>deadmau5</p>
+		      <p><i>4x4=12</i></p>
+
+		      <i class="blue-text text-darken-3 secondary-content mdi-content-add small-med" style="padding:20px 0" onclick="addToQueue(this, 'Animal Rights', 'deadmau5', '4x4=12', '10')"></i>
+		      </a>
+		    </li>
+
+		    <li class="collection-item avatar">
+		      <img src="albums/10.jpg" alt="" class="circle">
+		      <span class="title">Raise Your Weapon</span>
+		      <p>deadmau5</p>
+		      <p><i>4x4=12</i></p>
+
+		      <i class="blue-text text-darken-3 secondary-content mdi-content-add small-med" style="padding:20px 0" onclick="addToQueue(this, 'Raise Your Weapon', 'deadmau5', '4x4=12', '10')"></i>
+		      </a>
+		    </li>
+
+		    <li class="collection-item avatar">
+		      <img src="albums/10.jpg" alt="" class="circle">
+		      <span class="title">Everything Before</span>
+		      <p>deadmau5</p>
+		      <p><i>4x4=12</i></p>
+
+		      <i class="blue-text text-darken-3 secondary-content mdi-content-add small-med" style="padding:20px 0" onclick="addToQueue(this, 'Everything Before', 'deadmau5', '4x4=12', '10')"></i>
+		    </li>
+
+		    <li class="collection-item avatar">
+		      <img src="albums/11.jpg" alt="" class="circle">
+		      <span class="title">The Veldt</span>
+		      <p>deadmau5</p>
+		      <p><i>Album Title Goes Here</i></p>
+
+		      <i class="blue-text text-darken-3 secondary-content mdi-content-add small-med" style="padding:20px 0" onclick="addToQueue(this, 'The Veldt', 'deadmau5', 'Album Title Goes Here', '11')"></i>
+		    </li>
+
+		    <li class="collection-item avatar">
+		      <img src="albums/11.jpg" alt="" class="circle">
+		      <span class="title">October</span>
+		      <p>deadmau5</p>
+		      <p><i>Album Title Goes Here</i></p>
+
+		      <i class="blue-text text-darken-3 secondary-content mdi-content-add small-med" style="padding:20px 0" onclick="addToQueue(this, 'October', 'deadmau5', 'Album Title Goes Here', '11')"></i>
+		    </li>
+
+		    <li class="collection-item avatar">
+		      <img src="albums/8.jpg" alt="" class="circle">
+		      <span class="title">The Grid</span>
+		      <p>Daft Punk</p>
+		      <p><i>Tron: Legacy</i></p>
+
+		      <i class="blue-text text-darken-3 secondary-content mdi-content-add small-med" style="padding:20px 0" onclick="addToQueue(this, 'The Grid', 'Daft Punk', 'Tron: Legacy', '8')"></i>
+		    </li>
+
+		    <li class="collection-item avatar">
+		      <img src="albums/8.jpg" alt="" class="circle">
+		      <span class="title">Derezzed</span>
+		      <p>Daft Punk</p>
+		      <p><i>Tron: Legacy</i></p>
+
+		      <i class="blue-text text-darken-3 secondary-content mdi-content-add small-med" style="padding:20px 0" onclick="addToQueue(this, 'Derezzed', 'Daft Punk', 'Tron: Legacy', '8')"></i>
+		    </li>
+
+		</ul>
+	</main>
+
+
+</body>
+</html>
