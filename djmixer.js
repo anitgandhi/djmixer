@@ -5,8 +5,8 @@ $( document ).ready(function(){
 		}
 	);
 
-	$('#splashscreen').delay(500).fadeOut('slow');
-	$('#nearby-spinner').delay(500).fadeOut('slow', function(){
+	$('#splashscreen').delay(2500).fadeOut('slow');
+	$('#nearby-spinner').delay(5000).fadeOut('slow', function(){
 		$('#nearby-cards').fadeIn('slow');
 	});
 
