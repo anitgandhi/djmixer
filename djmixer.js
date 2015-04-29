@@ -72,6 +72,12 @@ function updateVal(id, element, operation)
 
 function addToQueue(element, songTitle, artistTitle, albumTitle, albumNum)
 {
+	// first check if they've joined a party
+	if (sessionStorage["joined"] == null)
+	{
+		Materialize.toast("You haven't joined a party yet!", 2500);
+		return;
+	}
 	$(element).addClass('mdi-navigation-check').removeClass('mdi-content-add');
 	element.onclick = function(){return false;};
 
@@ -112,6 +118,13 @@ function loadQueue()
 
 	// always clear the container first
 	container.html('');
+
+	// check if the user hasn't joined a party
+	if (sessionStorage["joined"] == null)
+	{
+		container.html('<p>You have not joined a party! :(</p>');
+		return;
+	}
 
 	// if it's empty, manually make queue an empty array
 	if (temp.length == 0)
@@ -221,3 +234,27 @@ function hostNext()
 	// once we've updated local storage, call loadHost to update the page
 	loadHost();
 }
+
+// joins a party after checking if the supplied password matches
+function joinParty(partyId, partyName)
+{
+	//if it doesn't, toast to tell them it's wrong
+	// if it does match, store in the sessionStorage, toast to tell, and redirect to queue
+	// queue should check if the user has joined a party from sessionStorage
+
+	var pw = $('#' + partyId).val();
+
+	if (pw != 'badm350')
+	{
+		Materialize.toast('Incorrect password for ' + partyName + '!', 2500);
+	}
+
+	else
+	{
+		sessionStorage["joined"] = "Kordas";
+		Materialize.toast("You have joined: " + partyName, 1500);
+		setTimeout(function(){ window.location.href = 'queue.html'; }, 1500);
+	}
+
+}
+
